@@ -1,33 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import React from 'react'
+import { SafeAreaView, StyleSheet, TextInput } from 'react-native'
 
-export default function App() {
-  const [text, setText] = useState("");
+const App = () => {
+  const [text, onChangeText] = React.useState('Useless Text')
+  const [number, onChangeNumber] = React.useState('')
+
   return (
-    <View style={styles.container}>
+    <SafeAreaView>
       <TextInput
-      style={{height:50}}
-      placeholder='Enter the sentence'
-      onChangeText={newText => setText(newText)}
-      defaultValue={text}
-       />
-      <Text>
-        {text
-            .split(" ")
-            .map(t => t && "🍕")
-            .join(" ")
-        }
-      </Text>
-    </View>
-  );
+        style={styles.input}
+        onChangeText={onChangeText}
+        value={text}
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeNumber}
+        value={number}
+        placeholder="useless placeholder"
+        keyboardType="numeric"
+      />
+    </SafeAreaView>
+  )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
-});
+})
+
+export default App
