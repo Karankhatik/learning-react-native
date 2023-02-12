@@ -1,11 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
+  const [text, setText] = useState("");
   return (
     <View style={styles.container}>
-      <Text>Hello world</Text>
-      <StatusBar style="auto" />
+      <TextInput
+      style={{height:50}}
+      placeholder='Enter the sentence'
+      onChangeText={newText => setText(newText)}
+      defaultValue={text}
+       />
+      <Text>
+        {text
+            .split(" ")
+            .map(t => t && "🍕")
+            .join(" ")
+        }
+      </Text>
     </View>
   );
 }
