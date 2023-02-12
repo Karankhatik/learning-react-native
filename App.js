@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello world</Text>
-      <StatusBar style="auto" />
+    <View>
+      <Text>Rivising the React concept</Text>
+      <Cat name="kitty" />
+      <Cat name="kitto" />
     </View>
-  );
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Cat = (props) => {
+  const [isHungry, setHungry] = useState(true)
+
+  return (
+    <>
+      <View>
+        <Text>
+          I m {props.name} and i m {isHungry ? 'Hungry' : 'Happy'}
+        </Text>
+        <Button
+          onPress={() => setHungry(false)}
+          title={isHungry ? ' Please fed me milk i m hungry' : 'Thankyou'}
+          disabled={!isHungry}
+        />
+      </View>
+    </>
+  )
+}
