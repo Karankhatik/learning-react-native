@@ -1,20 +1,42 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { FlatList, View,Text, ScrollView } from 'react-native'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Hello world</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const logo = {
+  uri: 'https://reactnative.dev/img/tiny_logo.png',
+  width: 64,
+  height: 64,
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+const App = () => {
+  const item = [
+    {
+       sub: 'CPP',
+       id:100
+    },
+    {
+      sub:"java",
+      id:101
+    },
+    {
+      sub:"PYTHON",
+      id:102
+    },
+
+  ]
+  return (       
+      <FlatList
+        data={item}
+        renderItem={(e) => {
+          return <View>                       
+            <Text >{e.item.sub}</Text>
+            <Text >{e.item.id}</Text>            
+          </View>
+                           
+        }}
+      />  
+         
+  )
+}
+
+export default App
